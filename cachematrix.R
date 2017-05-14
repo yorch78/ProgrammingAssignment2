@@ -5,33 +5,33 @@
 makeCacheMatrix <- function(x = matrix()) {
 ## Input parameter: x (by default creates an empty matrix object)
 	
-		## Inverse property initialization
-        i <- NULL
+	## Inverse property initialization
+	i <- NULL
         
-        ## Setter method
-        set <- function(y) {
-        		## Assigns object y to the special matrix x
-        		x <<- y
-        		i <<- NULL
+	## Setter method
+	set <- function(y) {
+		## Assigns object y to the special matrix x
+		x <<- y
+		i <<- NULL
         }
         
-        ## Getter method
-        get <- function() {
-        		## Returns the special matrix
-        		x	
-        } 
+	## Getter method
+	get <- function() {
+		## Returns the special matrix
+		x	
+	} 
         
-        ## Setter method
-        setInverse <- function(inverse) {
-        		## Assigns object inverse containing the inverse matrix to i
-        		i <<- inverse
-        }
+	## Setter method
+	setInverse <- function(inverse) {
+		## Assigns object inverse containing the inverse matrix to i
+		i <<- inverse
+	}
         
-        ## Getter method
-        getInverse <- function() {
-        		## Returns the inverse of the special matrix
-        		i	
-        } 
+	## Getter method
+	getInverse <- function() {
+		## Returns the inverse of the special matrix
+		i	
+	} 
         
         ## Returns a list with the special matrix available methods
         list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
@@ -43,26 +43,26 @@ makeCacheMatrix <- function(x = matrix()) {
 ## inverse cached.
 
 cacheSolve <- function(x, ...) {
-        ## Returns a matrix that is the inverse of 'x'
-        i <- x$getInverse()
+	## Returns a matrix that is the inverse of 'x'
+	i <- x$getInverse()
         
-        ## If the inverse is set, return the cached inverse and finish
-        if(!is.null(i)) {
-        		message("getting cached data")
-            return(i)
-        }
+	## If the inverse is set, return the cached inverse and finish
+	if(!is.null(i)) {
+		message("getting cached data")
+		return(i)
+	}
         
-        ## Get the original matrix to proceeed with the inverse calculation
-        data <- x$get()
+	## Get the original matrix to proceeed with the inverse calculation
+	data <- x$get()
         
-        ## Calculates the inverse matrix of data matrix
-        i <- solve(data)
+	## Calculates the inverse matrix of data matrix
+	i <- solve(data)
         
-        ## Set the new inverse to the object
-        x$setInverse(i)
+	## Set the new inverse to the object
+	x$setInverse(i)
         
-        ## Returns the inverse calculated
-        i
+	## Returns the inverse calculated
+	i
 }
 
 
